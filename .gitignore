@@ -47,5 +47,4 @@ hs_err_pid*
 /gradle/wrapper/gradle-wrapper.properties
 /app/.gitignore
 /app/proguard-rules.pro
-/app/src/androidTest/java/com/Bridgetree/pollwatchergored/
-/app/src/test/java/com/Bridgetree/pollwatchergored/
+/app/src/androidTest/java/com/bridgetree/simpletodo
