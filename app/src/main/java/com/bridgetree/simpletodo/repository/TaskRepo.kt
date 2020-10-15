@@ -32,6 +32,7 @@ class TaskRepo {
         return taskDao!!.getAllTasks()
     }
 
+    //In-order to execute a function using co-routine it has to be appended with 'suspend' keyword
     suspend fun insertTask(task : Task){
         taskDao!!.insertTask(task)
     }

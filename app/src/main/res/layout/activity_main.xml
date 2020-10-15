@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginStart="10dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="10dp"
     tools:context=".ui.MainActivity">
 
 
@@ -11,6 +14,7 @@
         android:id="@+id/et_Task"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="2"
         android:ems="10"
         android:hint="Enter ToDo items here"
         android:inputType="textPersonName"
@@ -21,13 +25,12 @@
 
     <EditText
         android:id="@+id/et_task_id"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        app:layout_constraintHorizontal_weight="2"
         android:ems="10"
         android:hint="Enter id to Modify"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/et_Task"
         app:layout_constraintEnd_toStartOf="@+id/btnAdd"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,28 +40,28 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_Task" />
 
     <Button
         android:id="@+id/btnAdd"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_weight="1"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="@+id/et_task_id"
         app:layout_constraintEnd_toStartOf="@+id/btnDelete"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/et_task_id"
-        app:layout_constraintTop_toTopOf="@+id/et_task_id"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="@+id/et_task_id" />
 
     <Button
         android:id="@+id/btnUpdate"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
+        app:layout_constraintHorizontal_weight="1"
         android:layout_height="wrap_content"
         android:text="Update"
         app:layout_constraintBottom_toBottomOf="@+id/et_Task"
@@ -69,9 +72,9 @@
 
     <Button
         android:id="@+id/btnDelete"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
+        app:layout_constraintHorizontal_weight="1"
         android:text="Delete"
         app:layout_constraintBottom_toBottomOf="@+id/btnAdd"
         app:layout_constraintEnd_toEndOf="parent"
@@ -79,3 +82,8 @@
         app:layout_constraintStart_toEndOf="@+id/btnAdd"
         app:layout_constraintTop_toTopOf="@+id/btnAdd" />
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--NOTE :
+While chaining the items, inorder to fill them evenly, declare their width as 0 do in case of horizontal
+
+If a particular child element in the horizontal chain should take up more space then declare horizontal weights for the child views in the chain-->

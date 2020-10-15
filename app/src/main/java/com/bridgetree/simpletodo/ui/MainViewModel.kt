@@ -13,10 +13,9 @@ class MainViewModel : ViewModel() {
         var taskRepo : TaskRepo = TaskRepo.getRepoInstance()
     }
 
-    fun getAllTasks() : LiveData<List<Task>> {
-        return taskRepo.getAllTasks()
-    }
+    fun getAllTasks() : LiveData<List<Task>> = taskRepo.getAllTasks()
 
+    //A function has to be of suspend type in-order to be executed within a co-routine
     fun insertTask(task : Task) = GlobalScope.launch { taskRepo.insertTask(task) }
 
     fun deleteTask(id : Int) = GlobalScope.launch { taskRepo.deleteTask(id) }
