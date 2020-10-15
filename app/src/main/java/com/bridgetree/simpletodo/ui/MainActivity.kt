@@ -21,6 +21,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        btnAdd.setOnClickListener(this)
+        btnUpdate.setOnClickListener(this)
+        btnDelete.setOnClickListener(this)
 
         mainViewModel = ViewModelProvider(this).get(MainViewModel::class.java)
         initRecyclerView()

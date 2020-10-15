@@ -13,7 +13,7 @@ abstract class TaskDatabase : RoomDatabase() {
     abstract fun getTaskDao(): TaskDao
 
 
-
+    //TODO : Remove "allowMainThreadQueries", since 'db' operations should be done asynchronously
     //Behaves like Singleton
     companion object {
         @Volatile //Keyword 'volatile' makes it easily visible to other threads
@@ -21,18 +21,17 @@ abstract class TaskDatabase : RoomDatabase() {
 
         fun getDatabase(): TaskDatabase? {
             if (instance == null) {
-                synchronized(TaskDatabase) {//TODO : Check importance of synchronized keyword
+                synchronized(TaskDatabase) {
                     instance =
                         MyApplication.context?.let {
                             Room.databaseBuilder(
                                 it,
                                 TaskDatabase::class.java,
                                 "task_db.db"
-                            ).build()
+                            ).allowMainThreadQueries().build()
                         }
-                        }
-
                 }
+            }
             return instance
         }
 
