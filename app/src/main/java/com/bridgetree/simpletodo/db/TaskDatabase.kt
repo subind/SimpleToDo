@@ -5,7 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.bridgetree.simpletodo.MyApplication
 
-@Database(entities = [Task::class], version = 1, exportSchema = false)
+@Database(entities = [Task::class], version = 2, exportSchema = false)
 abstract class TaskDatabase : RoomDatabase() {
 
 
@@ -13,7 +13,6 @@ abstract class TaskDatabase : RoomDatabase() {
     abstract fun getTaskDao(): TaskDao
 
 
-    //TODO : Remove "allowMainThreadQueries", since 'db' operations should be done asynchronously
     //Behaves like Singleton
     companion object {
         @Volatile //Keyword 'volatile' makes it easily visible to other threads
@@ -28,7 +27,7 @@ abstract class TaskDatabase : RoomDatabase() {
                                 it,
                                 TaskDatabase::class.java,
                                 "task_db.db"
-                            ).allowMainThreadQueries().build()
+                            ).fallbackToDestructiveMigration().build()
                         }
                 }
             }

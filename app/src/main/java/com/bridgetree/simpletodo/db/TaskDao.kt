@@ -14,7 +14,7 @@ interface TaskDao {
     fun deleteTask(id: Int)
 
 
-    @Query("UPDATE task_table SET id = :id AND taskName = :task")
+    @Query("UPDATE task_table SET taskName = :task WHERE id = :id")
     fun updateTask(id: Int, task: String)
 
 

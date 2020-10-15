@@ -4,6 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.bridgetree.simpletodo.db.Task
 import com.bridgetree.simpletodo.repository.TaskRepo
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
 
@@ -15,17 +17,10 @@ class MainViewModel : ViewModel() {
         return taskRepo.getAllTasks()
     }
 
-    fun insertTask(task : Task){
-        taskRepo.insertTask(task)
-    }
+    fun insertTask(task : Task) = GlobalScope.launch { taskRepo.insertTask(task) }
 
-    fun deleteTask(id : Int){
-        taskRepo.deleteTask(id)
-    }
+    fun deleteTask(id : Int) = GlobalScope.launch { taskRepo.deleteTask(id) }
 
-    fun updateTask(id: Int, task : String){
-        taskRepo.updateTask(id, task)
-    }
-
+    fun updateTask(id: Int, task : String) = GlobalScope.launch { taskRepo.updateTask(id, task) }
 
 }

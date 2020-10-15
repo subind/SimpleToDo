@@ -32,15 +32,15 @@ class TaskRepo {
         return taskDao!!.getAllTasks()
     }
 
-    fun insertTask(task : Task){
+    suspend fun insertTask(task : Task){
         taskDao!!.insertTask(task)
     }
 
-    fun deleteTask(id : Int){
+    suspend fun deleteTask(id : Int){
         taskDao!!.deleteTask(id)
     }
 
-    fun updateTask(id: Int, task : String){
+    suspend fun updateTask(id: Int, task : String){
         taskDao?.updateTask(id, task)
     }
 
